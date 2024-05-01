@@ -22,23 +22,65 @@ class LinkedList:
             self.sum += data
         self.count += 1
 
+    def count_elements(self):
+        count = 0
+        current = self.head
+        while current:
+            count += 1
+            current = current.next
+        return count
+
+    def separate_elements(self, elements):
+        separated_lists = {}
+        for element in elements:
+            data_type = type(element)
+            if data_type in separated_lists:
+                separated_lists[data_type].append(element)
+            else:
+                separated_lists[data_type] = LinkedList()
+                separated_lists[data_type].append(element)
+        return separated_lists
+
     def print_list(self):
         temp = self.head
         while temp:
             print(temp.data, end='\t')
             temp = temp.next
 
-    def merge_lists(self, list2):
-        temp = self.head
-        while temp.next:
-            temp = temp.next
-        temp.next = list2.head
-
-    # def summa(self):
+    # def merge_lists(self, list2):
     #     temp = self.head
-    #     sum = 0
-    #     while temp:
-    #         if type(temp.data) is int:
-    #             sum += temp.data
+    #     while temp.next:
     #         temp = temp.next
-    #     return sum
+    #     temp.next = list2.head
+
+    def delete(self, data):
+        print('All Nodes: ')
+        self.print_list()
+        x = self.head
+        while x.next:
+            if x.next.data == data:
+                x.next = x.next.next
+                self.print_list()
+                return 'Successfully deleted'
+            x = x.next
+        return 'No Node Found'
+
+    def index_of_element_in_linked_list(head, target):
+        index = 0
+        current = head
+
+        while current:
+            if current.data == target:
+                return index
+            current = current.next
+            index += 1
+
+        return -1
+
+    def linked_list_to_list(self):
+        result = []
+        current = self.head
+        while current:
+            result.append(current.data)
+            current = current.next
+        return result

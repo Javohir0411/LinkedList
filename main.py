@@ -21,6 +21,3 @@ ll2.append(5)
 # print(ll.summa())
 # print(f"Kiritilgan elementlarning umumiy qiymati = {ll.sum}")
 # print(f"Umumiy {ll.count} ta qiymat kiritilgan")
-
-ll.merge_lists(ll2)
-ll.print_list()
